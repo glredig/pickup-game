@@ -1,0 +1,27 @@
+.checkin_popup {
+	width: 80%;
+	max-width: 400px;
+	box-shadow: 0 0 3px 3px #555555;
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	background-color: #eeeeee;
+}
+
+.player_list {
+	list-style-type: none;
+
+	li {	
+		padding: 1em .75em;
+		border-radius: .4em;
+		border: .3em solid #67A360;
+		background-color: #BCE3B8;
+	
+		&.not_attending {
+			border-color: #C94738;
+			background-color: #CC867E;
+		}
+	}
+}
+
