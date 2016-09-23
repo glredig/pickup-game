@@ -7,25 +7,24 @@ var Checkin = (function () {
 		opt_out_btn,
 		popup,
 		close,
-		name_input;
+		name_input,
+		no_players_el;
 
 	function init(config) {
 		btn = config.btn;
 		player_list = config.player_list;
+		no_players_el = config.no_players_el;
 		checkin_url = $(btn).data('checkin-url');
 		game_id = $(btn).data('game-id');
 		build_popup();
 
-		console.log("pl", config);
 		// Listeners
-
 		$(close).on('click', function() {
 			popup.style.display = 'none';
 		});
 
 		$(btn).on('click', function(e) {
 			e.preventDefault();
-			console.log("click");
 			popup.style.display = 'block';
 		});
 
@@ -70,25 +69,31 @@ var Checkin = (function () {
 	}
 
 	function checkin(attending) {
-		$.ajax({
+		if (name_input.value) {
+			$.ajax({
 			url: checkin_url + '.json',
 			type: 'POST',
 			data: { player: { name: name_input.value, game_id: game_id, attending: attending }}
-		})
-		.done(function(data) {
-			console.log("success", data);
-			add_player(data.name, data.attending);
-			name_input.value = '';
-			popup.style.display = 'none';
-		})
-		.fail(function() {
-			console.log("failure");
-		});
+			})
+			.done(function(data) {
+				console.log("success", data);
+				add_player(data.name, data.attending);
+				name_input.value = '';
+				popup.style.display = 'none';
+			})
+			.fail(function() {
+				alert("Couldn't check in. Please try again.");
+			});
+		}
 	}
 
 	function add_player(name, attending) {
 		var player_li = document.createElement('li');
 
+		if (no_players_el) {
+			no_players_el.style.display = 'none';
+		}
+		name_input.value = '';
 		player_li.innerText = name;
 		player_li.className = attending ? 'attending' : 'not_attending';
 		player_list.appendChild(player_li);
@@ -102,6 +107,7 @@ var Checkin = (function () {
 $(document).ready(function() {
 	Checkin.init({
 		btn: $('[data-checkin-url]')[0],
-		player_list: $('.player_list')[0]
+		player_list: $('.player_list')[0],
+		no_players_el: $('#no_players')[0]
 	});
 });
