@@ -1,22 +1,19 @@
-<h1>Next Game</h1>
-
-<h2>Next game: <%= date_of_next("Monday").strftime("%b %d") %> (<%= %> )</h2>
-<div>
-	<span>Players:</span>
-	<div>
-		<% if @next_game.present? && @next_game.players.present? %>
-			<ul class='player_list'>
-				<% @next_game.players.each do |player| %>
-					<li class="<%= player.attending? ? 'attending' : 'not_attending' %>">
-						<%= player.name %> <%= player.attending? ? "IN" : "OUT" %>
-					</li>
-				<% end %>
-			</ul>
-		<% else %>
-			<span>Nobody has checked in</span>
-		<% end %>
-	</div>
-	<div>
-		<a href="#" data-game-id="<%= @next_game.try(:id) %>" data-checkin-url="<%= players_url %>">Check in</a>
+<div id="wrapper">
+	<h1>Next game: <%= date_of_next("Monday").strftime("%b %d") %> (<%= %> )</h1>
+	<div id="checkin_wrapper">
+		<a id="check_in" href="#" data-game-id="<%= @next_game.try(:id) %>" data-checkin-url="<%= players_url %>">Check in</a>
+		<div id="players_wrapper">
+			<% if @next_game.present? && @next_game.players.present? %>
+				<ul class='player_list'>
+					<% @next_game.players.order("attending DESC").each do |player| %>
+						<li class="<%= player.attending? ? 'attending' : 'not_attending' %>">
+							<%= player.name %>
+						</li>
+					<% end %>
+				</ul>
+			<% else %>
+				<span>Nobody has checked in</span>
+			<% end %>
+		</div>
 	</div>
 </div>

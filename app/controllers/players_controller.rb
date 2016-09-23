@@ -2,10 +2,7 @@ class PlayersController < ApplicationController
 	def create
 		next_date = view_context.date_of_next("Monday")
 
-		p "&" * 100
-		p params
 		if params[:player][:game_id].present?
-			p "*" * 100
 			@player = Player.create!(player_params)
 		end
 

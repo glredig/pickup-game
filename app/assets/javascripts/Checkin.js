@@ -89,7 +89,7 @@ var Checkin = (function () {
 	function add_player(name, attending) {
 		var player_li = document.createElement('li');
 
-		player_li.innerText = name + ' ' + (attending ? 'IN' : 'OUT');
+		player_li.innerText = name;
 		player_li.className = attending ? 'attending' : 'not_attending';
 		player_list.appendChild(player_li);
 	}
