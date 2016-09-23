@@ -1,11 +1,18 @@
+$darkgreen: #66BB6A; /* 400 */
+$medgreen: #81C784; /* 300 */
+$lightgreen: #C8E6C9; /* 100 */
+$darkred: #EF5350;
+$medred: #E57373;
+$lightred: #FFCDD2;
+
 * {
-	font-family: arial, sans-serif;
+	font-family: 'Roboto', arial, sans-serif;
 }
 
 body {
 	padding: 0;
 	margin: 0;
-	background-color: #eeeef1;
+	background-color: #333333;
 }
 
 #wrapper {
@@ -14,14 +21,17 @@ body {
 	margin: 1em auto;
 
 	h1 {
+		color: #ffffff;
+		font-weight: 100;
 		text-align: center;
+		line-height: 2em;
 	}
 }
 
 #players_wrapper {
 	overflow-y: scroll;
 	max-height: 500px;
-	background-color: #ffffff;
+	margin-top: 1em;
 
 	span {
 		text-align: center;
@@ -35,14 +45,13 @@ body {
 .checkin_popup {
 	width: 80%;
 	max-width: 400px;
-	box-shadow: 0 0 1em .5em #222222;
+	box-shadow: 0 1em 2em .1em #222;
 	position: fixed;
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
-	background-color: #eeeeee;
-	padding: 1em;
-	border-radius: .3em;
+	background-color: #FFFFFF;
+	padding: 1.5em;
 
 	.close_btn {
 		position: absolute;
@@ -60,7 +69,7 @@ body {
 
 	input {
 		margin-top: 1.5em;
-		width: 97%;
+		width: 96.5%;
 		margin-bottom: 1em;
 		height: 3em;
 		border-radius: .2em;
@@ -72,19 +81,20 @@ body {
 
 	.opt_btn {
 		width: 46%;
-		line-height: 3em;
+		line-height: 2.2em;
 		text-align: center;
 		display: inline-block;
 		cursor: pointer;
+		font-size: 1.5em;
 	
 		&.opt_in {
-			background-color: #67A360;
+			background-color: $darkgreen;
 			color: #ffffff;
-			margin-right: 5%;
+			margin-right: 7%;
 		}
 
 		&.opt_out {
-			background-color: #C94738;
+			background-color: $darkred;
 			color: #ffffff;
 		}
 	}
@@ -99,8 +109,8 @@ body {
 		margin-top: .2em;
 		padding: 1em .75em;
 		border-radius: .4em;
-		border: .3em solid #67A360;
-		background-color: #BCE3B8;
+		border: .3em solid $darkgreen;
+		background-color: $lightgreen;
 		position: relative;
 
 		&:after {
@@ -113,16 +123,16 @@ body {
 		&.attending {
 			&:after {
 				content: 'IN';
-				color: #67A360;
+				color: $medgreen;
 			}
 		}
 	
 		&.not_attending {
-			border-color: #C94738;
-			background-color: #CC867E;
+			border-color: $darkred;
+			background-color: $lightred;
 			&:after {
 				content: 'OUT';
-				color: #C94738;
+				color: $medred;
 			}
 		}
 
@@ -134,16 +144,18 @@ body {
 
 #check_in {
 	text-decoration: none;
-	background-color: #555555;
+	background-color: #1976D2;
 	color: #ffffff;
 	text-align: center;
 	display: block;
-	line-height: 2em;
-	font-size: 2em;
-	border: .1em solid #aaaaaa;
+	line-height: 2.2em;
+	font-size: 1.8em;
+	cursor: pointer;
+	font-weight: 500;
+	box-shadow: 0 .1em .1em .05em #222222;
 
 	&:hover {
-		background-color: #777777;
+		background-color: #2196F3;
 	}
 }
 

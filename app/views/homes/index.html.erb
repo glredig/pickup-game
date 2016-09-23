@@ -1,7 +1,7 @@
 <div id="wrapper">
 	<h1>Next game: <%= date_of_next("Monday").strftime("%b %d") %> (<%= distance_of_time_in_words(Date.today, date_of_next("Monday")) %>)</h1>
 	<div id="checkin_wrapper">
-		<a id="check_in" href="#" data-game-id="<%= @next_game.try(:id) %>" data-checkin-url="<%= players_url %>">Check in</a>
+		<a id="check_in" href="#" data-game-id="<%= @next_game.try(:id) %>" data-checkin-url="<%= players_url %>">CHECK IN</a>
 		<div id="players_wrapper">
 			<ul class='player_list'>
 				<% if @next_game.present? && @next_game.players.present? %>

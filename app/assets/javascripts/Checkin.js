@@ -52,11 +52,11 @@ var Checkin = (function () {
 
 		opt_in_btn = document.createElement('div');
 		opt_in_btn.className = 'opt_btn opt_in';
-		opt_in_btn.innerText = 'I\'m in!';
+		opt_in_btn.innerText = 'I\'M IN!';
 
 		opt_out_btn = document.createElement('div');
 		opt_out_btn.className = 'opt_btn opt_out';
-		opt_out_btn.innerText = 'I\'m out!';
+		opt_out_btn.innerText = 'I\'M OUT!';
 
 		popup.appendChild(close);
 		popup.appendChild(name_input);
