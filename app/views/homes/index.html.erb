@@ -1,5 +1,5 @@
 <div id="wrapper">
-	<% if @next_game.date.in_time_zone("Pacific Time (US & Canada)").today? %>
+	<% if @next_game.today? %>
 		<% days_count = "Today" %>
 	<% else %>
 		<% days_count = "#{distance_of_time_in_words(Date.today, date_of_next("Monday"))}" %>
