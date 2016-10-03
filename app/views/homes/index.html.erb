@@ -1,5 +1,5 @@
 <div id="wrapper">
-	<% if @next_game.today? %>
+	<% if @next_game.date.today? %>
 		<% days_count = "Today" %>
 	<% else %>
 		<% days_count = "#{distance_of_time_in_words(Date.today, date_of_next("Monday"))}" %>
