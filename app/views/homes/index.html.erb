@@ -7,7 +7,7 @@
 	<p style="color: #ffffff; font-weight: 100; line-height: 1.5em; font-size: 1.5em">
 		The 6 guys who played on 10/24 agreed to skip Halloween. Based on the numbers recently, it's safe to say there won't be a game on Halloween.
 	</p>
-	<h1>Next game: <%= date_of_next("Monday").strftime("%b %d") %></h1>
+	<h1>Next game: <%= @next_game.date.strftime("%b %d") %></h1>
 	<div id="checkin_wrapper">
 		<a id="check_in" href="#" data-game-id="<%= @next_game.try(:id) %>" data-checkin-url="<%= players_url %>">CHECK IN</a>
 		<div id="players_wrapper">
