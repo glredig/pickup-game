@@ -1,5 +1,5 @@
 class HomesController < ApplicationController
 	def index
-		@next_game = Game.where(date: DateTime.now.in_time_zone("Pacific Time (US & Canada)").beginning_of_day..1.week.from_now).first
+		@next_game = Game.where('date > ?', DateTime.yesterday ).first
 	end
 end
