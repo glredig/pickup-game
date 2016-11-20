@@ -1,5 +1,5 @@
 class HomesController < ApplicationController
 	def index
-		@next_game = Game.where('date > ?', DateTime.now.beginning_of_day ).first
+		@next_game = Game.where('date > ?', DateTime.now - 8.hours ).first
 	end
 end
