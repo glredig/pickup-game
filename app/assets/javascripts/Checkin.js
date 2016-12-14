@@ -77,7 +77,7 @@ var Checkin = (function () {
 			})
 			.done(function(data) {
 				console.log("success", data);
-				add_player(data.name, data.attending);
+				add_player(data.id, data.name, data.attending, data.url);
 				name_input.value = '';
 				popup.style.display = 'none';
 			})
@@ -87,7 +87,7 @@ var Checkin = (function () {
 		}
 	}
 
-	function add_player(name, attending) {
+	function add_player(id, name, attending, url) {
 		var player_li = document.createElement('li');
 
 		if (no_players_el) {
@@ -96,6 +96,8 @@ var Checkin = (function () {
 		name_input.value = '';
 		player_li.innerText = name;
 		player_li.className = attending ? 'attending' : 'not_attending';
+		player_li.id = id;
+		$(player_li).data('update-url', url);
 		player_list.appendChild(player_li);
 	}
 
