@@ -4,25 +4,30 @@
 	<% else %>
 		<% days_count = "#{distance_of_time_in_words(Date.today, date_of_next("Monday"))}" %>
 	<% end %>
-	<p style="color: #ffffff; font-weight: 100; line-height: 1.5em; font-size: 1.5em">
+	<p style="display: none; color: #ffffff; font-weight: 100; line-height: 1.5em; font-size: 1.5em">
 		You are now able to update your status by clicking on your name. This is done on the honor system, so please don't mess with other names unless you've been asked to do so.
 		Also, please keep in mind that other people may schedule their night based on a head count, so please don't back out after committing (unless you have good reason).
 	</p>
-	<h1>Next game: <%= @next_game.date.strftime("%b %d") %></h1>
-	<div id="checkin_wrapper">
-		<a id="check_in" href="#" data-game-id="<%= @next_game.try(:id) %>" data-checkin-url="<%= players_url %>">CHECK IN</a>
-		<div id="players_wrapper">
-			<ul class='player_list'>
-				<% if @next_game.present? && @next_game.players.present? %>
-						<% @next_game.players.order("attending DESC").each do |player| %>
-							<li id="<%= player.id %>" class="<%= player.attending? ? 'attending' : 'not_attending' %>" data-update-url="<%= player_url(player) %>">
-								<%= player.name %>
-							</li>
-						<% end %>
-				<% else %>
-					<span id="no_players">Nobody has checked in</span>
-				<% end %>
-			</ul>
+	<p style="color: #ffffff; font-weight: 100; line-height: 1.5em; font-size: 1.5em">
+		There will be no game on 12/26 and 1/2 due to the holidays. If you have permission to open the gym, and don't know why these dates are cancelled, feel free to email me at <a href="mailto:plgameinfo@gmail.com" style="color: #ddddff;">plgameinfo@gmail.com</a>
+	</p>
+	<% if 1 == 0 %>
+		<h1>Next game: <%= @next_game.date.strftime("%b %d") %></h1>
+		<div id="checkin_wrapper">
+			<a id="check_in" href="#" data-game-id="<%= @next_game.try(:id) %>" data-checkin-url="<%= players_url %>">CHECK IN</a>
+			<div id="players_wrapper">
+				<ul class='player_list'>
+					<% if @next_game.present? && @next_game.players.present? %>
+							<% @next_game.players.order("attending DESC").each do |player| %>
+								<li id="<%= player.id %>" class="<%= player.attending? ? 'attending' : 'not_attending' %>" data-update-url="<%= player_url(player) %>">
+									<%= player.name %>
+								</li>
+							<% end %>
+					<% else %>
+						<span id="no_players">Nobody has checked in</span>
+					<% end %>
+				</ul>
+			</div>
 		</div>
-	</div>
+	<% end %>
 </div>
